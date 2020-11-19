@@ -4,9 +4,12 @@ export default makeStyles((theme) => ({
   grow: {
     flexGrow: 1,
   },
-  menuButton: {
-    marginRight: theme.spacing(2),
+
+  toolbar: {
+    minHeight: "64px",
   },
+
+
   title: {
     display: 'none',
     [theme.breakpoints.up('sm')]: {
@@ -69,5 +72,17 @@ export default makeStyles((theme) => ({
   sectionMobileShow: {
     whiteSpace: "nowrap",
     display: 'relative',
-  }
+  },
+
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+
+  navbarIcon: {
+      '&:hover': {
+        backgroundColor: 'transparent',
+      }
+  },
+
+
 }));

@@ -8,7 +8,7 @@ import SearchIcon from '@material-ui/icons/Search';
 import CartDropdown from '../cart-dropdown/cart-dropdown.component';
 import {connect} from 'react-redux'
 // import CartIcon from '../cart-icon/cart-icon.component';
-import {CartIconButton, AccountIconButton, NotiIconButton, MobileMoreIconButton, MenuIconButton} from './icons';
+import {CartIconButton, AccountIconButton, NotiIconButton, MobileMoreIconButton, MenuIconButton, SearchIconButton} from './IconButtons';
 import useStyles from './NavBar.style'
 import { Grow } from '@material-ui/core';
 
@@ -26,13 +26,13 @@ function PrimarySearchAppBar({ hidden }) {
   
     return (
       <div className={classes.grow}>
-        <AppBar position="static">
-          <Toolbar>
-            <MenuIconButton className={classes.menuButton} />
+        <AppBar position="fixed" >
+          <Toolbar variant="regular" className={classes.toolbar}>
+            <MenuIconButton className={`${classes.navbarIcon} ${classes.menuButton}`}/>
             <Typography className={classes.title} variant="h6" >
               IMark
             </Typography>
-            <div className={classes.search}>
+            {/* <div className={classes.search}>
               <div className={classes.searchIcon}>
                 <SearchIcon />
               </div>
@@ -44,14 +44,16 @@ function PrimarySearchAppBar({ hidden }) {
                 }}
                 inputProps={{ 'aria-label': 'search' }}
               />
-            </div>
+            </div> */}
             <div className={classes.grow} />
-            <div className={classes.sectionDesktop}>
-              <NotiIconButton />
-              <CartIconButton />
-              <AccountIconButton menuId={menuId}/>
-            </div>
-            <div className={classes.sectionMobile}>
+            <SearchIconButton className={classes.navbarIcon}/>
+            <NotiIconButton className={classes.navbarIcon}/>
+            <CartIconButton className={classes.navbarIcon}/>
+            <AccountIconButton menuId={menuId} className={classes.navbarIcon}/>
+            {/* <div className={classes.sectionDesktop}>
+              
+            </div> */}
+            {/* <div className={classes.sectionMobile}>
               <Grow in={isMobileMenuOpen}>
                 <div className={isMobileMenuOpen ? classes.sectionMobileShow : classes.sectionMobileHide}>
                   <NotiIconButton />
@@ -60,7 +62,7 @@ function PrimarySearchAppBar({ hidden }) {
                 </div>
               </Grow>
               <MobileMoreIconButton handleMobileMenuOpen={handleMobileMenuOpen}/>
-            </div>
+            </div> */}
           </Toolbar>
         </AppBar>
         {/* {renderMenu} */}

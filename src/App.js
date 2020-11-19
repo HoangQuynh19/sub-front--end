@@ -1,6 +1,6 @@
 
 import './App.css';
-import React from "react";
+import React, { Fragment, lazy, Suspense } from "react";
 import {
   BrowserRouter as Router,
   Switch,
@@ -8,22 +8,26 @@ import {
  
 } from "react-router-dom";
 import NavBar from "./Component/Header/NavBar";
+import {defaultTheme} from './themes';
+import { CssBaseline } from '@material-ui/core';
+import { makeStyles, MuiThemeProvider, ThemeProvider } from '@material-ui/core/styles';
+import GlobalStyles from './GlobalStyles';
 
-import Login from './Component/Page/Login';
+const HomePage = lazy(() => import("./Component/Page/Home/Home.page"));
+const Login = lazy(() => import('./Component/Page/Login'));
 function App() {
   return (
-   
-      <div>
+    <MuiThemeProvider theme={defaultTheme}>
+      <CssBaseline />
+      <GlobalStyles />
+      <Suspense fallback={<Fragment />}>
         <NavBar/>
         <Switch>
-          <Route exact path="/login">
-            <Login />
-          </Route>
-          <Route exact path="/login">
-            <NavBar />
-          </Route>
+          <Route exact path="/login" component={Login} />
+          <Route exact path="/" component={HomePage} />
         </Switch>
-      </div>
+      </Suspense>
+    </MuiThemeProvider>
     
   );
 }
