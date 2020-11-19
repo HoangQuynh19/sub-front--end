@@ -6,12 +6,51 @@ const styles = theme => ({
      * Disable the focus outline, which is default on some browsers like
      * chrome when focusing elements
      */
+
+    "*": {
+      margin: 0,
+      padding: 0,
+      boxSizing: "border-box",
+    },
+
     "*:focus": {
       outline: 0
     },
+
     ".text-white": {
       color: theme.palette.common.white
     },
+
+    ".block": {
+      display: "block",
+    },
+
+    ".no-shadow": {
+      boxShadow: "none",
+    },
+
+    ".no-border": {
+      border: "none",
+    },
+
+    ".fullSize": {
+      width: "100%",
+      height: "100%",
+    },
+
+    ".floatHover": {
+      transition: "box-shadow .25s ease,transform .25s ease,-webkit-transform .25s ease",
+      "&:hover": {
+        transform: "translate3d(0,-5px,0)",
+        boxShadow: "0 1.5rem 2.5rem rgba(22,28,45,.1),0 .3rem 0.5rem -.50rem rgba(22,28,45,.05) !important",
+      }
+    },
+
+    // "body": {
+    //   width: "100%",
+    //   height: "100%",
+    // },
+
     ".listItemLeftPadding": {
       paddingTop: `${theme.spacing(1.75)}px !important`,
       paddingBottom: `${theme.spacing(1.75)}px !important`,
@@ -88,6 +127,9 @@ const styles = theme => ({
       [theme.breakpoints.down("xs")]: {
         paddingTop: `${theme.spacing(14)}px !important`
       }
+    },
+    "code": {
+      fontFamily: "source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace",
     }
   }
 });
