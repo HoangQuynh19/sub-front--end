@@ -32,11 +32,21 @@ const styles = theme => ({
     ".no-border": {
       border: "none",
     },
+    // ------------------------Size--------------------------
 
     ".fullSize": {
       width: "100%",
       height: "100%",
     },
+
+    ".auto-height": {
+      height: "auto"
+    },
+    
+    ".auto-width": {
+      width: "auto"
+    },
+    
 
     ".floatHover": {
       transition: "box-shadow .25s ease,transform .25s ease,-webkit-transform .25s ease",
@@ -45,6 +55,17 @@ const styles = theme => ({
         boxShadow: "0 1.5rem 2.5rem rgba(22,28,45,.1),0 .3rem 0.5rem -.50rem rgba(22,28,45,.05) !important",
       }
     },
+
+    // ------------------------Color--------------------------
+    ".white" :{
+      color: "#ffffff"
+    },
+    // ------------------------IMAGE--------------------------
+
+    ".fitContain": {
+      objectFit: "contain",
+    },
+
 
     // "body": {
     //   width: "100%",

@@ -6,7 +6,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Badge from '@material-ui/core/Badge';
 import { Grid, Paper, Toolbar, Typography } from '@material-ui/core';
 import homePageStyle from './Styles';
-import  NarBar from './navigation/NavBar';
+import  NarBar from '../../shared/components/navigation/NavBar';
 import Routing from './Routing';
 
 AOS.init({once: true});

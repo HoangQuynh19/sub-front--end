@@ -1,26 +1,17 @@
-import React, { Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import {
     Grid,
     Typography,
-    Card,
     Button,
-    Hidden,
-    Box,
     withStyles,
     withWidth,
-    isWidthUp,
-    Paper,
-    makeStyles,
 } from "@material-ui/core";
-import WaveBorder from "../../../shared/components/WaveBorder";
-import ZoomImage from "../../../shared/components/ZoomImage";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 
-import { Block } from "@material-ui/icons";
 
 const styles = (theme) => ({
     section: {
@@ -30,7 +21,7 @@ const styles = (theme) => ({
         maxWidth: "1140px",
 
         [theme.breakpoints.up("sm")]: {
-            padding: "24px 16px 96px",
+            padding: "24px 16px 48px",
         },
         [theme.breakpoints.up("md")]: {
             paddingTop: "40px",
@@ -43,7 +34,6 @@ const styles = (theme) => ({
     },
 });
 
-
 const sectionHeaderStyles = (theme) => ({
     sectionHeader: {
         marginBottom: "24px",
@@ -51,24 +41,18 @@ const sectionHeaderStyles = (theme) => ({
             marginBottom: "32px",
         }
     },
-    sectionHeader_titleWraper: {
+    titleWraper: {
 
     },
-    sectionHeader_title: {
+    title: {
         fontWeight: "bold",
-    },
+    },   
+})
 
+const SectionHeaderSubtileStyle = (theme) => ({
     sectionHeader_subtitle: {
         "$ span": {
-
         }
-    },
-
-    sectionHeader_ctaWrapper: {
-
-    },
-    sectionHeader_ctaContainer: {
-
     },
     price: {
         color: "rgba(0, 0, 0, 0.87)",
@@ -78,14 +62,49 @@ const sectionHeaderStyles = (theme) => ({
             fontSize: "48px",
         }
     },
+})
+export const SectionHeaderSubtile = withStyles(SectionHeaderSubtileStyle)((props) => {
+    const { classes, textClass, text, align, variant, is_price } = props;
+    return (
+        <Grid className={classes.wrapper} item xs={12}>
+            <Typography className={classNames(classes.text, textClass)} variant={variant} color="textSecondary" align={align} >
+                {
+                    is_price ? <span className={classes.price}>{text}</span> : text
+                }                    
+            </Typography>
+        </Grid>
+    )
+})
 
+SectionHeaderSubtile.defaultProps = {
+    align: "left",
+    variant: "h6",
+    is_price: false,
+    textClass: ""
+}
+
+const SectionHeaderCtaStyle = () => ({
     buyNowButtonWrapper: {
         marginLeft: "8px",
         "&:first-child": {
             marginLeft: 0,
         }
     },
+})
+export const SectionHeaderCta = withStyles(SectionHeaderCtaStyle)((props) => {
+    const { classes, text, color } = props;
+    return (
+        <Grid item xs={12}>
+            <Grid container noWrap alignItems="center">
+                <div className={classes.buyNowButtonWrapper}>
+                    <Button variant="contained" size="large" color={color || "primary"}>{text}</Button>
+                </div>
+            </Grid>
+        </Grid>
+    )
+})
 
+export const SectionHeaderNoteStyle = () => ({
     giftWrapper: {
         display: "inline-block",
         padding: "4px 8px",
@@ -93,82 +112,51 @@ const sectionHeaderStyles = (theme) => ({
         borderRadius: "16px",
     },
 })
+export const SectionHeaderNote = withStyles(SectionHeaderNoteStyle)((props) => {
+    const {classes, text} = props;
+    return (
+        <div className={classes.giftWrapper} data-aos="fade-up">
+            <Typography variant="subtitle1" color="textSecondary" align="left" >{text}</Typography>
+        </div>
+    )
+})
 
 export const SectionHeader = withStyles(sectionHeaderStyles)((props) => {
-    const { classes, title, subtitle, cta, note } = props;
-    const titleProps = {
-        variant: title.variant || "h3",
-        color: title.color || "textPrimary",
-        align: title.align || "left",
-    }
-
-    const subtitleProps = {
-        align: subtitle.align || "left",
-    }
+    const { classes, titleClass, title, note, children, xs, md, ...others} = props;
     return (
         <Grid
-            item xs={12} md={6}
+            item xs={xs} md={md}
             data-aos="fade-up"
         >
             <Grid container className={classes.sectionHeader} spacing={2} data-aos="fade-up">
-                <Grid className={classes.sectionHeader_titleWraper} item xs={12}>
-                    <Typography className={classes.sectionHeader_title} {...titleProps}>{title.text}</Typography>
+                <Grid className={classes.titleWraper} item xs={12}>
+                    <Typography className={classNames(classes.title, titleClass)} {...others}>{title}</Typography>
                 </Grid>
-                {
-                    subtitle &&
-                    <Grid className={classes.sectionHeader_subtitleWraper} item xs={12}>
-                        <Typography className={classes.sectionHeader_subtitle} variant={subtitleVariant} color="textSecondary" align={subtitleAlign} >
-                            <span className={classes.price}>{subtitle.text}</span>
-                        </Typography>
-                    </Grid>
-                }
-                {
-                    cta &&
-                    <Grid item xs={12}>
-                        <Grid container noWrap alignItems="center">
-                            <div className={classes.buyNowButtonWrapper}>
-                                <Button variant="contained" size="large" color={cta.color || "primary"}>{cta.text}</Button>
-                            </div>
-                        </Grid>
-                    </Grid>
-                }
-
+                {children}
             </Grid>
-            {
-                note &&
-                <div className={classes.giftWrapper} data-aos="fade-up">
-                    <Typography variant="subtitle1" color="textSecondary" align="left" >{note.text}</Typography>
-                </div>
-            }
+            {note}
         </Grid>
     )
 })
 
 SectionHeader.defaultProps = {
-    titleAlign: "left",
-    titleVariant: "h3",
-
-    subtitleAlign: "left",
-    subtitleVariant: "h6",
+    align: "left",
+    variant: "h3",
+    color: "textPrimary",
+    xs: 12,
+    md: 6,
+    titleClass: "",
 }
 
 SectionHeader.prototype = {
     classes: PropTypes.object.isRequired,
-    
     title: PropTypes.string.isRequired,
-    titleAlign: PropTypes.string,
-    titleVariant: PropTypes.string,
-
-    subtitle: PropTypes.object,
-    subtitleAlign: PropTypes.string,
-    subtitleVariant: PropTypes.string,
-
-    cta: PropTypes.object,
+    align: PropTypes.string,
+    variant: PropTypes.string,
     note: PropTypes.object,
 }
 
 export const BreackDrirectionGrid = withWidth()(({ width, children, others }) => {
-
     return (
         <Grid direction={["sm", "xs"].includes(width) ? "column-reverse" : "row"} container spacing={2} justify="space-between" {...others}>{children}
         </Grid>)
