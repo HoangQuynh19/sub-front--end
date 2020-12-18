@@ -5,8 +5,9 @@ import {
 } from "@material-ui/core";
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
-
+import CrossfadeImage from 'react-crossfade-image';
 import Section, { BreackDrirectionGrid, SectionHeader, SectionImage, SectionHeaderSubtile, SectionHeaderCta, SectionHeaderNote } from "../../../shared/components/Section";
+import { SectionHeaderCtaStyle, SectionHeaderNoteStyle, sectionHeaderStyles, SectionHeaderSubtileStyle, SectionStyles } from "../Styles";
 
 const styles = () => ({
   featureImage: {
@@ -17,12 +18,12 @@ const styles = () => ({
 function HeadSection(props) {
   const { classes } = props;
   return (
-    <Section>
+    <Section classes={SectionStyles()}>
       <BreackDrirectionGrid>
-        <SectionHeader title="Experience your music like never before."
-          note={<SectionHeaderNote text="$60 Apple Music gift card with purchase of select Beats products.*" />}>
-            <SectionHeaderSubtile text="$299.95" is_price/>
-            <SectionHeaderCta text="Buy now"/>
+        <SectionHeader classes={sectionHeaderStyles()}  title="GS66 STEAL"
+           note={<SectionHeaderNote classes={SectionHeaderNoteStyle()} text="$60 Apple Music gift card with purchase of select Beats products." />}>
+            <SectionHeaderSubtile classes={SectionHeaderSubtileStyle()} text="$299.95" is_price/>
+            <SectionHeaderCta classes={SectionHeaderCtaStyle()} text="Buy now"/>
         </SectionHeader>
         <SectionImage classes={classes} /> 
       </BreackDrirectionGrid>

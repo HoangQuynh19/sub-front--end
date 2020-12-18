@@ -1,15 +1,4 @@
-import { makeStyles } from '@material-ui/core/styles';
-
-export default makeStyles((theme) => ({
-    fullwh: {
-        width: "100%",
-        height: "100%",
-    }, 
-    section: {
-        // paddingTop: "24px",
-    }
-
-}));
+import { makeStyles, withStyles } from '@material-ui/core/styles';
 
 export const SectionStyles = makeStyles((theme) => ({
     root: {
@@ -78,3 +67,21 @@ export const SectionHeaderSubtileStyle = makeStyles((theme) => ({
         }
     },
 }))
+
+const styles = (theme) => ({
+    "@global": {
+        ".shadow": {
+            boxShadow: "0 2px 10px 0 rgba(23, 70, 161, .11)",
+        },
+        '.flex-start': {
+            alignItems: "flex-start",
+        }
+    }
+    
+})
+
+function AccountSettingStyle(){
+    return null;
+}
+
+export default withStyles(styles, {withTheme: true})(AccountSettingStyle);

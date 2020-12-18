@@ -3,6 +3,7 @@ import Section, { SectionHeader, SectionHeaderSubtile } from "../../../shared/co
 // import PricingSection from "./PricingSection";
 import classNames from "classnames";
 import { makeStyles } from "@material-ui/core";
+import { sectionHeaderStyles, SectionHeaderSubtileStyle, SectionStyles } from "../Styles";
 
 const style = makeStyles(theme => ({
     root: {
@@ -16,11 +17,17 @@ const style = makeStyles(theme => ({
 
 function Header() {
     const classes = style();
+    
+    const headerStyle = sectionHeaderStyles();
+    headerStyle.title = classNames(headerStyle.title, 'white');
+    const headsubtileStyle = SectionHeaderSubtileStyle();
+    headsubtileStyle.text = classNames(headsubtileStyle.text, 'white')
+
     return (
         <div className={classes.root}>
-            <Section >
-                <SectionHeader titleClass="white" title="Account Setting">
-                    <SectionHeaderSubtile textClass="white" text="Change account information and settings" />
+            <Section classes={SectionStyles()}>
+                <SectionHeader classes={headerStyle} title="Account Setting">
+                    <SectionHeaderSubtile classes={headsubtileStyle} text="Change account information and settings" />
                 </SectionHeader>
             </Section>
         </div>

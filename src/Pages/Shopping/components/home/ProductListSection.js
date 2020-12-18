@@ -16,6 +16,7 @@ import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/opacity.css';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import Section, { SectionHeader, SectionHeaderSubtile } from "../../../shared/components/Section";
+import { SectionStyles } from "../Styles";
 
 const productCardStyle = () => ({
   productImage: {
@@ -52,13 +53,14 @@ const ProductCard = withStyles(productCardStyle)((props) => {
 const PRODUCT_LIST = {
   "Speaker 01": `${process.env.PUBLIC_URL}/assets/images/products/sp1.png`,
   "Earphone 02": `${process.env.PUBLIC_URL}/assets/images/products/sp2.png`,
-
+  "Earphone 03": `${process.env.PUBLIC_URL}/assets/images/products/sp2.png`,
+  "Speaker 04": `${process.env.PUBLIC_URL}/assets/images/products/sp1.png`,
 }
 
 function ProductListSection(props) {
   return (
-    <Section>
-      <SectionHeader xs={12} md={12} title="Featured products" variant="h3" align="center">
+    <Section classes={SectionStyles()}>
+      <SectionHeader xs={12} md={12} title="Featured products" variant="h4" align="center"> 
         <SectionHeaderSubtile variant="h6" align="center" text="After 3 days all of your offers will arrive and you will have another 7 days to select your new company." />
       </SectionHeader>
       <Grid container spacing={4}>
@@ -66,7 +68,7 @@ function ProductListSection(props) {
           Object.entries(PRODUCT_LIST).map(i => {
             const [k, v] = i;
             return (
-              <Grid item xs={12} sm={6} md={4} data-aos="fade-up">
+              <Grid item xs={12} sm={6} md={3} data-aos="fade-up">
                 <ProductCard name={k} image={v} />
               </Grid>
             )

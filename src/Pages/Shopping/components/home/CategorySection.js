@@ -9,6 +9,7 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import classNames from "classnames";
 import { defaults } from "js-cookie";
 import { Category } from "@material-ui/icons";
+import { SectionStyles } from "../Styles";
 
 const styles = (theme) => ({
     wrapper: {
@@ -60,7 +61,7 @@ const CATELIST = {
 function CategorySection(props) {
     const { classes } = props;
     return (
-        <Section>
+        <Section classes={SectionStyles()}>
             <SectionHeader title="Categories" variant="h4" />
             <Grid container spacing={2}>
                 {

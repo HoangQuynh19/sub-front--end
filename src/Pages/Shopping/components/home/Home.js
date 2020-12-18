@@ -16,6 +16,8 @@ function Home(props) {
       <MainFeaturePost />
       <CategorySection />
       <ProductListSection />  
+      <ProductListSection />  
+
       {/* <FeatureSection /> */}
       {/* <PricingSection /> */}
     </main>
