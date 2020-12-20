@@ -47,27 +47,30 @@ export const SectionHeaderCta = (props) => {
 }
 
 export const SectionHeaderNote = (props) => {
-    const {classes, text} = props;
+    const {classes, aos, text} = props;
     return (
-        <div className={classes && classes.root} data-aos="fade-up">
-            <Typography variant="subtitle1" color="textSecondary" align="left" >{text}</Typography>
+        <div data-aos={aos && "fade-up"}>
+            <div className={classes.root}>
+                <Typography variant="subtitle1" color="textSecondary" align="left" >{text}</Typography>
+            </div>
         </div>
     )
 }
 
 export const SectionHeader = (props) => {
-    const { classes, titleClass, title, note, children, xs, md, ...others} = props;
+    const { classes, titleClass, title, subtitle, note, children, xs, md, aos, ...others} = props;
     return (
         <Grid
             item xs={xs} md={md}
-            data-aos="fade-up"
+            data-aos={aos && "fade-up"}
             container
-            spacing={2}
+            // spacing={2}
             className={classes && classes.root}
         >
             {/* <Grid container className={classes && classes.root} spacing={2} data-aos="fade-up"> */}
                 <Grid className={classes && classes.titleWraper} item xs={12}>
                     <Typography className={classes && classes.title} {...others}>{title}</Typography>
+                    { subtitle }
                 </Grid>
                 {children}
             {/* </Grid> */}
@@ -99,12 +102,19 @@ export const BreackDrirectionGrid = withWidth()(({ width, children, others }) =>
         </Grid>)
 });
 
-export const SectionImage = (classes) => {
+export const SectionImage = (props) => {
+    const {classes, aos, ...others} = props;
     return (
-        <Grid container item xs={12} md={6} justify="center" data-aos="fade-up">
+        <Grid container item {...others} data-aos={aos && "fade-up"}>
             <LazyLoadImage className={classNames("block", "fullSize", classes.featureImage)} alt="Headphones" src={`${process.env.PUBLIC_URL}/assets/images/products/laptop02.png`} effect="blur" />
         </Grid>
     )
+}
+
+SectionImage.defaultProps = {
+    xs: 12,
+    md: 6,
+    justify: "center",
 }
 
 function Section(props) {

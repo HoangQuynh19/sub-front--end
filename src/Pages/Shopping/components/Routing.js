@@ -1,8 +1,9 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
 import { Switch } from "react-router-dom";
-import PropsRoute from "../../shared/components/PropsRoute";
+import PropsRoute from "../../shared/components/route/PropsRoute";
 import Home from "./home/Home";
+import ProductDetail from "./detail/Detail.page";
 
 function Routing(props) {
   const { selectHome } = props;
@@ -22,7 +23,9 @@ function Routing(props) {
           )}
         />
       ))} */}
+      <PropsRoute path="/detail" component={ProductDetail} />
       <PropsRoute path="/" component={Home} selectHome={selectHome} />
+
     </Switch>
   );
 }

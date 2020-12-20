@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
 import { Switch } from "react-router-dom";
-import PropsRoute from "../../shared/components/PropsRoute";
+import PropsRoute from "../../shared/components/route/PropsRoute";
 import GeneralSetting from "./setting/general";
 
 function Routing(props) {

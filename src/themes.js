@@ -6,9 +6,9 @@ const breackpoints = createBreakpoints({});
 export const defaultTheme = createMuiTheme({
     palette: {
         type: "light",
-        primary: {
-            main: "#1976d2",
-        },
+        // primary: {
+        //     main: "#1976d2",
+        // },
         secondary: {
             main: "#5850ec"
         },
@@ -37,10 +37,19 @@ export const defaultTheme = createMuiTheme({
         },
         h4: {
             fontSize: "1.5625rem",
+            [breackpoints.up('sm')]: {
+                fontSize: "1.8219rem",
+            },
+            [breackpoints.up('md')]: {
+                fontSize: "2.0243rem",
+            },
+            [breackpoints.up("lg")]: {
+                fontSize: "2.0243rem",
+            }
         },
         h5:{
             // fontFamily: '"Roboto", "Helvetica",  sans-serif, "Arial"',
-            fontSize: "16px",
+            fontSize: "1.5rem",
             fontWeight: 500,
             letterSpacing: "-0.05px"
         },

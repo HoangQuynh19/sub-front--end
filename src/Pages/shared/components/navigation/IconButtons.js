@@ -3,7 +3,7 @@ import { AccountCircle, MoreVert, Notifications, Menu, NotificationsOutlined, Sh
 import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
 import { CustomNotificationIcon, CustomSearchIcon } from '../../../shared/components/CustomIcons';
-import CustomizedMenus from './CartDropDown';
+import CartDropDown from './CartDropDown';
 
 const StyledBadge = withStyles((theme) => ({
     badge: {
@@ -31,7 +31,7 @@ const CartIcon = ({ className, oggleCartHidden }) => {
                     </StyledBadge>
                 </IconButton>
             </Tooltip>
-            <CustomizedMenus anchorEl={anchorEl} setAnchorEl={setAnchorEl}/>
+            <CartDropDown anchorEl={anchorEl} setAnchorEl={setAnchorEl}/>
         </Fragment>
 
     )
@@ -45,37 +45,6 @@ export const CartIconButton = connect(
     null,
     mapDispatchToProps
 )(CartIcon);
-
-// const StyledBadge = withStyles((theme) => ({
-//     badge: {
-//         backgroundColor: '#44b700',
-//         color: '#44b700',
-//         boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
-//         '&::after': {
-//             position: 'absolute',
-//             top: 0,
-//             left: 0,
-//             width: '100%',
-//             height: '100%',
-//             borderRadius: '50%',
-//             animation: '$ripple 1.2s infinite ease-in-out',
-//             border: '1px solid currentColor',
-//             content: '""',
-//         },
-//     },
-//     '@keyframes ripple': {
-//         '0%': {
-//             transform: 'scale(.8)',
-//             opacity: 1,
-//         },
-//         '100%': {
-//             transform: 'scale(2.4)',
-//             opacity: 0,
-//         },
-//     },
-// }))(Badge);
-
-
 
 const AccountIcon = ({ className, menuId, handleProfileMenuOpen }) => {
     const theme = useTheme();

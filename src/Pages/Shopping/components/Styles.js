@@ -16,18 +16,17 @@ export const SectionStyles = makeStyles((theme) => ({
         width: "100%",
         margin: "0 auto",
         padding: "48px 16px",
-        maxWidth: "1140px",
+        maxWidth: "1280px",
 
         [theme.breakpoints.up("sm")]: {
-            padding: "24px 16px 48px",
+            // padding: "24px 16px 48px",
+            padding: "64px 64px",
+
         },
         [theme.breakpoints.up("md")]: {
-            paddingTop: "40px",
+            paddingTop: "96px",
         },
-    },
-
-    featureImage: {
-        maxWidth: "600px",
+        
     },
 }));
 

@@ -27,7 +27,7 @@ const StyledPopover = withStyles({
     />
 ));
 
-const StyledListItem = withStyles((theme) => ({
+const CartItem = withStyles((theme) => ({
     root: {
         '&:focus': {
             backgroundColor: theme.palette.primary.main,
@@ -44,7 +44,7 @@ const StyledAvatar = withStyles(() => ({
     }
 }))(Avatar)
 
-export default function CustomizedMenus(props) {
+export default function CartDropDown(props) {
     const { anchorEl, setAnchorEl } = props;
 
 
@@ -65,22 +65,22 @@ export default function CustomizedMenus(props) {
             </Box>
             <List disablePadding={true}>
 
-                <StyledListItem divider={true}>
+                <CartItem divider={true}>
                     <ListItemAvatar>
                         <StyledAvatar>
                             <LocalShippingOutlined />
                         </StyledAvatar>
                     </ListItemAvatar>
                     <ListItemText primary={<Typography variant="subtitle2">Your order is shipping</Typography>} secondary="Jan 9, 2020" />
-                </StyledListItem>
-                <StyledListItem divider={true}>
+                </CartItem>
+                <CartItem divider={true}>
                     <ListItemAvatar>
                         <StyledAvatar>
                             <LocalShippingOutlined />
                         </StyledAvatar>
                     </ListItemAvatar>
                     <ListItemText primary={<Typography variant="subtitle2">Your order is shipping</Typography>} secondary="Jan 9, 2020" />
-                </StyledListItem>
+                </CartItem>
             </List>
 
             <Box style={{ padding: "8px", justifyContent: "center", display: "flex" }}>

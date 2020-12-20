@@ -17,6 +17,14 @@ const styles = theme => ({
       outline: 0
     },
 
+    'body': {
+      background: '#f4f4f4',
+    },
+    
+    'a': {
+      textDecoration: 'none',
+    },
+
     ".text-white": {
       color: theme.palette.common.white
     },
@@ -29,9 +37,6 @@ const styles = theme => ({
       boxShadow: "none",
     },
 
-    ".no-border": {
-      border: "none",
-    },
     // ------------------------Size--------------------------
 
     ".fullSize": {
@@ -56,17 +61,42 @@ const styles = theme => ({
       }
     },
 
+    'section': {
+      width: "100%",
+      margin: "0 auto",
+      maxWidth: "1280px",  
+      padding: '16px 0px'
+    },
+
     // ------------------------Color--------------------------
     ".white" :{
       color: "#ffffff"
+    },
+    ".white-background" :{
+      background: "#ffffff"
     },
     // ------------------------IMAGE--------------------------
 
     ".fitContain": {
       objectFit: "contain",
     },
+    // ------------------------TEXT--------------------------
+    '.boldText': {
+      fontWeight: 'bold',
+    },
+    // ------------------------Border Decoration--------------------------
 
+    ".no-border": {
+      border: "none",
+    },
 
+    ".top-divider": {
+      borderTop: '1px solid rgb(242, 242, 242)',
+      marginTop: '16px',
+    },
+    '.pad-top-divider': {
+      padding: '16px 0 0 0',
+    },
     // "body": {
     //   width: "100%",
     //   height: "100%",

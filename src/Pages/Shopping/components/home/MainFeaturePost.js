@@ -22,7 +22,7 @@ function HeadSection(props) {
       <BreackDrirectionGrid>
         <SectionHeader classes={sectionHeaderStyles()}  title="GS66 STEAL"
            note={<SectionHeaderNote classes={SectionHeaderNoteStyle()} text="$60 Apple Music gift card with purchase of select Beats products." />}>
-            <SectionHeaderSubtile classes={SectionHeaderSubtileStyle()} text="$299.95" is_price/>
+            {/* <SectionHeaderSubtile classes={SectionHeaderSubtileStyle()} text="37.052.000" is_price/> */}
             <SectionHeaderCta classes={SectionHeaderCtaStyle()} text="Buy now"/>
         </SectionHeader>
         <SectionImage classes={classes} /> 

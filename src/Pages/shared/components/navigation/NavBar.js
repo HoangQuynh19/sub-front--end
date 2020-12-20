@@ -25,7 +25,7 @@ function PrimarySearchAppBar({ hidden }) {
   
     return (
       <div className={classes.grow}>
-        <AppBar position="fixed" color="inherit">
+        <AppBar position="fixed" color="inherit" elevation={1}>
           <Toolbar variant="regular" className={classes.toolbar}>
             <MenuIconButton className={`${classes.navbarIcon} ${classes.menuButton}`}/>
             <Typography className={classes.title} variant="h4" >
