@@ -1,6 +1,6 @@
 export const GET_USERS = 'GET_USERS';
 export const DELETE_USER = 'DELETE_USER';
-export const LOGIN_USER = 'LOGIN_USER'
+export const LOGIN_USER = 'LOGIN_USER';
 export const ADD_USER = 'ADD_USER';
 export const GET_ERRORS = 'GET_ERRORS';
 
@@ -17,5 +17,3 @@ export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAIL = 'REGISTER_FAIL';
 export const REGISTER = 'REGISTER';
 export const AUTH_ERROR_HANDLE = 'AUTH_ERROR_HANDLE';
-
-

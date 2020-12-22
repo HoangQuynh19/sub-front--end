@@ -1,15 +1,15 @@
-import React, { memo } from "react";
-import PropTypes from "prop-types";
-import { Switch } from "react-router-dom";
-import PropsRoute from "../../shared/components/route/PropsRoute";
-import Home from "./home/Home";
-import ProductDetail from "./detail/Detail.page";
+import React, { memo } from 'react';
+import PropTypes from 'prop-types';
+import { Switch } from 'react-router-dom';
+import PropsRoute from '../../shared/components/route/PropsRoute';
+import Home from './home/Home';
+import ProductDetail from './detail/Detail.page';
 
 function Routing(props) {
-  const { selectHome } = props;
-  return (
-    <Switch>
-      {/* {blogPosts.map((post) => (
+    const { selectHome } = props;
+    return (
+        <Switch>
+            {/* {blogPosts.map((post) => (
         <PropsRoute
           path={post.url}
           component={BlogPost}
@@ -23,16 +23,15 @@ function Routing(props) {
           )}
         />
       ))} */}
-      <PropsRoute path="/detail" component={ProductDetail} />
-      <PropsRoute path="/" component={Home} selectHome={selectHome} />
-
-    </Switch>
-  );
+            <PropsRoute path="/detail" component={ProductDetail} />
+            <PropsRoute path="/" component={Home} selectHome={selectHome} />
+        </Switch>
+    );
 }
 
 Routing.propTypes = {
-//   blogposts: PropTypes.arrayOf(PropTypes.object),
-  selectHome: PropTypes.func.isRequired,
+    //   blogposts: PropTypes.arrayOf(PropTypes.object),
+    selectHome: PropTypes.func.isRequired,
 };
 
 export default memo(Routing);

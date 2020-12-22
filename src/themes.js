@@ -5,57 +5,75 @@ const breackpoints = createBreakpoints({});
 
 export const defaultTheme = createMuiTheme({
     palette: {
-        type: "light",
+        type: 'light',
         // primary: {
         //     main: "#1976d2",
         // },
         secondary: {
-            main: "#5850ec"
+            main: '#5850ec',
         },
         text: {
-            primary: "#263238",
+            primary: '#263238',
         },
-        background:{
-            default: "#ffffff"
-        }
+        background: {
+            default: '#ffffff',
+        },
     },
     typography: {
-        fontFamily: "Lato",
+        fontFamily: '"Roboto", "Helvetica",  sans-serif, "Arial"',
 
         h3: {
-            fontFamily: "Lato",
-            fontSize: "2rem",
+            // fontFamily: 'Lato',
+            fontSize: '2rem',
             [breackpoints.up('sm')]: {
-                fontSize: "2.5707rem",
+                fontSize: '2.5707rem',
             },
             [breackpoints.up('md')]: {
-                fontSize: "2.7849rem",
+                fontSize: '2.7849rem',
             },
-            [breackpoints.up("lg")]: {
-                fontSize: "2.9991rem",
-            }
+            [breackpoints.up('lg')]: {
+                fontSize: '2.9991rem',
+            },
         },
         h4: {
-            fontSize: "1.5625rem",
+            fontSize: '1.5625rem',
             [breackpoints.up('sm')]: {
-                fontSize: "1.8219rem",
+                fontSize: '1.8219rem',
             },
             [breackpoints.up('md')]: {
-                fontSize: "2.0243rem",
+                fontSize: '2.0243rem',
             },
-            [breackpoints.up("lg")]: {
-                fontSize: "2.0243rem",
-            }
+            [breackpoints.up('lg')]: {
+                fontSize: '2.0243rem',
+            },
         },
-        h5:{
+        h5: {
             // fontFamily: '"Roboto", "Helvetica",  sans-serif, "Arial"',
-            fontSize: "1.5rem",
-            fontWeight: 500,
-            letterSpacing: "-0.05px"
+            fontSize: '1.125rem',
+            // letterSpacing: '-0.05px',
+            [breackpoints.up('sm')]: {
+                fontSize: '1.25rem',
+            },
+            [breackpoints.up('md')]: {
+                fontSize: '1.375rem',
+            },
+            [breackpoints.up('lg')]: {
+                fontSize: '1.5rem',
+            },
         },
         h6: {
-            fontSize: "1.125rem",
-        }
+            fontSize: '0.8125rem',
+            fontWeight: '400',
+            [breackpoints.up('sm')]: {
+                fontSize: '0.8125rem',
+            },
+            [breackpoints.up('md')]: {
+                fontSize: '0.9375rem',
+            },
+            [breackpoints.up('lg')]: {
+                fontSize: '1.0625rem',
+            },
+        },
     },
-})
-defaultTheme.shadows[8] = "0 0 1px 0 rgba(0,0,0,0.31), 0 5px 8px -2px rgba(0,0,0,0.25)"
+});
+defaultTheme.shadows[8] = '0 0 1px 0 rgba(0,0,0,0.31), 0 5px 8px -2px rgba(0,0,0,0.25)';

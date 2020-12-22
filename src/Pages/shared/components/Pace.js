@@ -1,34 +1,34 @@
-import PropTypes from "prop-types";
-import { withStyles } from "@material-ui/core";
+import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core';
 
 const styles = {
-  "@global": {
-    ".pace": {
-      pointerEvents: "none",
-      userSelect: "none"
+    '@global': {
+        '.pace': {
+            pointerEvents: 'none',
+            userSelect: 'none',
+        },
+        '.pace-inactive': {
+            display: 'none',
+        },
+        '.pace .pace-progress': {
+            background: (props) => props.color || null,
+            position: 'fixed',
+            zIndex: 2000,
+            top: 0,
+            right: '100%',
+            width: '100%',
+            height: 3,
+        },
     },
-    ".pace-inactive": {
-      display: "none"
-    },
-    ".pace .pace-progress": {
-      background: props => props.color || null,
-      position: "fixed",
-      zIndex: 2000,
-      top: 0,
-      right: "100%",
-      width: "100%",
-      height: 3
-    }
-  }
 };
 
 function Pace() {
-  activatePace.call(this);
-  return null;
+    activatePace.call(this);
+    return null;
 }
 
 Pace.propTypes = {
-  color: PropTypes.string.isRequired
+    color: PropTypes.string.isRequired,
 };
 
 export default withStyles(styles)(Pace);
