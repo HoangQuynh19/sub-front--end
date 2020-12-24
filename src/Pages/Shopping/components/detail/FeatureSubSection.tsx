@@ -36,7 +36,7 @@ export default function FeatureSubSection(props: Props): JSX.Element {
                     </Typography>
                 )}
                 {grid ? (
-                    <Grid className={classes.content} container>
+                    <Grid className={classes.content} container alignContent="space-between" alignItems="center">
                         {children}
                     </Grid>
                 ) : (

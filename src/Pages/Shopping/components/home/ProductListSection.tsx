@@ -10,6 +10,7 @@ import { Section, SectionHeader } from '../../../shared/components/Section';
 import { sectionHeaderStyles, SectionStyles } from '../Styles';
 import { ClassNameMap } from '@material-ui/core/styles/withStyles';
 import PriceFeature from '../shared/PriceFeature';
+import { Link } from 'react-router-dom';
 
 export type ProductOverviewType = { name: string; image: string; price: number; compare?: number };
 
@@ -45,38 +46,34 @@ const productCardStyle = () =>
         },
     });
 
-function numberWithCommas(x: number): string {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-}
-type ProductCardProps = { classes: ClassNameMap<string> } & ProductOverviewType;
-const ProductCard = withStyles(productCardStyle)(
+export type ProductCardProps = { classes: ClassNameMap<string> } & ProductOverviewType;
+export const ProductCard = withStyles(productCardStyle)(
     ({ classes, name, image, price, compare }: ProductCardProps): JSX.Element => {
-        let discountPercent = undefined;
-        if (compare !== undefined && compare > price) {
-            discountPercent = Math.round(((compare - price) * 100) / compare);
-        }
         return (
             <Card className={classes.root} color="secondary">
                 {/* <CardActionArea> */}
-                <CardMedia className={classNames(classes.productImage, 'card-image')}>
-                    <LazyLoadImage
-                        className={classNames('block', 'fitContain', 'fullSize')}
-                        width="100%"
-                        height="100%"
-                        alt="Headphones"
-                        src={image}
-                        effect="blur"
-                    />
-                </CardMedia>
-                <CardContent>
-                    <Typography gutterBottom variant="h6" noWrap>
-                        {name}
-                    </Typography>
-                    <Rating className={classes.rating} readOnly value={4} size="small" />
-                    <div className={classes.contentWrapper}>
-                        <PriceFeature card price={price} comparePrice={compare} unit="₫" />
-                    </div>
-                </CardContent>
+                <Link to="/detail">
+                    <CardMedia className={classNames(classes.productImage, 'card-image')}>
+                        <LazyLoadImage
+                            className={classNames('block', 'fitContain', 'fullSize')}
+                            width="100%"
+                            height="100%"
+                            alt="Headphones"
+                            src={image}
+                            effect="blur"
+                        />
+                    </CardMedia>
+                    <CardContent>
+                        <Typography gutterBottom variant="h6" noWrap>
+                            {name}
+                        </Typography>
+                        <Rating className={classes.rating} readOnly value={4} size="small" />
+                        <div className={classes.contentWrapper}>
+                            <PriceFeature card price={price} comparePrice={compare} unit="₫" />
+                        </div>
+                    </CardContent>
+                </Link>
+
                 {/* </CardActionArea> */}
             </Card>
         );

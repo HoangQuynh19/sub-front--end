@@ -8,6 +8,8 @@ import { Grid, Paper, Toolbar, Typography } from '@material-ui/core';
 import homePageStyle from './Styles';
 import NarBar from '../../shared/components/navigation/NavBar';
 import Routing from './Routing';
+import smoothScrollTop from '../../shared/functions/smoothScrollTop';
+import SnackbarProvider from '../../shared/components/SnackbarProvider';
 
 AOS.init({
     // Settings that can be overridden on per-element basis, by `data-aos-*` attributes:
@@ -22,30 +24,15 @@ AOS.init({
 
 export default function BadgeOverlap() {
     const classes = homePageStyle();
-
+    const selectHome = useCallback(() => {
+        smoothScrollTop();
+    }, []);
     return (
         <div>
             <NarBar />
-            <Routing selectHome={() => console.log('SelectHome')} />
-            {/* <div className={classes.fullWH}>
-        <section className={classes.section}>
-          <Paper>
-            <Grid>
-              <Grid item xs={12} md={6}>
-                <Grid spacing={2}>
-                  <Grid item xs={12}>
-                    <Typography variant="h3" color="textPrimary" align="left">Experience your music like never before.</Typography>
-                  </Grid>
-                </Grid>
-              </Grid>
-              <Grid item xs={12} md={6}>
-
-              </Grid>
-            </Grid>
-
-          </Paper>
-        </section>
-      </div> */}
+            <SnackbarProvider>
+                <Routing selectHome={selectHome} />
+            </SnackbarProvider>
         </div>
     );
 }

@@ -15,6 +15,8 @@ import {
 } from '@material-ui/core';
 import { LocalShippingOutlined } from '@material-ui/icons';
 import { Link } from 'react-router-dom';
+import { connect, ConnectedProps } from 'react-redux';
+import { RootState } from '../../../../redux/root-reducer';
 
 const StyledPopover = withStyles({
     paper: {
@@ -54,11 +56,14 @@ const StyledAvatar = withStyles(() => ({
     },
 }))(Avatar);
 
-type CartDropDownProps = {
+const connector = connect((state: RootState) => ({ cart: state.cart }), {});
+type PropsFromRedux = ConnectedProps<typeof connector>;
+
+type CartDropDownProps = PropsFromRedux & {
     anchorEl: null | Element | ((element: Element) => Element);
     setAnchorEl: React.Dispatch<React.SetStateAction<null | Element | ((element: Element) => Element)>>;
 };
-export default function CartDropDown(props: CartDropDownProps): JSX.Element {
+const CartDropDown = (props: CartDropDownProps) => {
     const { anchorEl, setAnchorEl } = props;
     const handleClose = () => {
         setAnchorEl(null);
@@ -103,10 +108,11 @@ export default function CartDropDown(props: CartDropDownProps): JSX.Element {
             </List>
 
             <Box style={{ padding: '8px', justifyContent: 'center', display: 'flex' }}>
-                <Button component={Link} to="#" size="small">
-                    Mark
+                <Button component={Link} to="/cart" onClick={handleClose} size="small">
+                    Xem giỏ hàng
                 </Button>
             </Box>
         </StyledPopover>
     );
-}
+};
+export default connector(CartDropDown);

@@ -8,6 +8,7 @@ import { Card, CardContent, Grid, Typography, withStyles, Theme, createStyles, W
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import classNames from 'classnames';
 import { SectionStyles } from '../Styles';
+import { Link } from 'react-router-dom';
 
 const styles = (theme: Theme) =>
     createStyles({
@@ -39,25 +40,27 @@ const CategoryCard = withStyles(styles)((props: { name: string; imageSrc: string
             elevation={1}
             raised
         >
-            <CardContent className={classes.cardContent}>
-                <Grid container spacing={2}>
-                    <Grid container item justify="center" xs={12}>
-                        <LazyLoadImage
-                            className={classNames(classes.cardImage, 'block', 'fullSize')}
-                            effect="opacity"
-                            alt={name}
-                            src={imageSrc}
-                            width="auto"
-                            height="auto"
-                        />
+            <Link to="/browse">
+                <CardContent className={classes.cardContent}>
+                    <Grid container spacing={2}>
+                        <Grid container item justify="center" xs={12}>
+                            <LazyLoadImage
+                                className={classNames(classes.cardImage, 'block', 'fullSize')}
+                                effect="opacity"
+                                alt={name}
+                                src={imageSrc}
+                                width="auto"
+                                height="auto"
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <Typography variant="h6" align="center" color="textPrimary">
+                                {name}
+                            </Typography>
+                        </Grid>
                     </Grid>
-                    <Grid item xs={12}>
-                        <Typography variant="h6" align="center" color="textPrimary">
-                            {name}
-                        </Typography>
-                    </Grid>
-                </Grid>
-            </CardContent>
+                </CardContent>
+            </Link>
         </Card>
     );
 });

@@ -1,9 +1,7 @@
 import React, { Fragment } from 'react';
 import { Typography } from '@material-ui/core';
+import { numberWithCommas } from '../../../../utils';
 
-function numberWithCommas(x: number): string {
-    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
-}
 export interface PriceProps {
     price: number;
     maxPrice?: number;

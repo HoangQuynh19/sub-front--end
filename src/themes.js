@@ -2,7 +2,9 @@ import { createMuiTheme } from '@material-ui/core/styles';
 import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 
 const breackpoints = createBreakpoints({});
-
+// border
+const borderWidth = 2;
+const borderColor = 'rgba(0, 0, 0, 0.13)';
 export const defaultTheme = createMuiTheme({
     palette: {
         type: 'light',
@@ -49,17 +51,19 @@ export const defaultTheme = createMuiTheme({
         },
         h5: {
             // fontFamily: '"Roboto", "Helvetica",  sans-serif, "Arial"',
-            fontSize: '1.125rem',
-            // letterSpacing: '-0.05px',
-            [breackpoints.up('sm')]: {
-                fontSize: '1.25rem',
-            },
-            [breackpoints.up('md')]: {
-                fontSize: '1.375rem',
-            },
-            [breackpoints.up('lg')]: {
-                fontSize: '1.5rem',
-            },
+            // fontSize: '1.125rem',
+            fontSize: '16px',
+            fontWeight: 500,
+            letterSpacing: '-0.05px',
+            // [breackpoints.up('sm')]: {
+            //     fontSize: '1.25rem',
+            // },
+            // [breackpoints.up('md')]: {
+            //     fontSize: '1.375rem',
+            // },
+            // [breackpoints.up('lg')]: {
+            //     fontSize: '1.5rem',
+            // },
         },
         h6: {
             fontSize: '0.8125rem',
@@ -74,6 +78,10 @@ export const defaultTheme = createMuiTheme({
                 fontSize: '1.0625rem',
             },
         },
+    },
+    border: {
+        borderColor: borderColor,
+        borderWidth: borderWidth,
     },
 });
 defaultTheme.shadows[8] = '0 0 1px 0 rgba(0,0,0,0.31), 0 5px 8px -2px rgba(0,0,0,0.25)';

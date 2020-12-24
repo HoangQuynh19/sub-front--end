@@ -70,8 +70,11 @@ const mapDispatchToProps = () => ({
 });
 
 export const CartIconButton = connect(null, mapDispatchToProps)(CartIcon);
-type AccountIconType = { menuId: string; handleProfileMenuOpen?: (event: React.MouseEvent<HTMLElement>) => void };
-const AccountIcon = ({ menuId, handleProfileMenuOpen }: AccountIconType): JSX.Element => {
+type AccountIconType = {
+    menuId: string;
+    handleProfileMenuOpen?: (event: React.MouseEvent<HTMLElement>) => void;
+} & IconProps;
+const AccountIcon = ({ menuId, ...others }: AccountIconType): JSX.Element => {
     const theme = useTheme();
     // const theme = useTheme();
     return (
@@ -81,8 +84,8 @@ const AccountIcon = ({ menuId, handleProfileMenuOpen }: AccountIconType): JSX.El
             aria-label="account of current user"
             aria-controls={menuId}
             aria-haspopup="true"
-            onClick={handleProfileMenuOpen}
             color="inherit"
+            {...others}
             // containerElement={<Link to="/listings" />}
         >
             <Avatar src="/static/images/avatar/1.jpg" style={{ width: theme.spacing(4), height: theme.spacing(4) }} />

@@ -4,6 +4,9 @@ import { Switch } from 'react-router-dom';
 import PropsRoute from '../../shared/components/route/PropsRoute';
 import Home from './home/Home';
 import ProductDetail from './detail/Detail.page';
+import Browse from './catebrowse/Browse.page';
+import Cart from './cart/Cart.page';
+import Checkout from './checkout/Checkout.page';
 
 function Routing(props) {
     const { selectHome } = props;
@@ -23,6 +26,9 @@ function Routing(props) {
           )}
         />
       ))} */}
+            <PropsRoute path="/checkout" component={Checkout} />
+            <PropsRoute path="/cart" component={Cart} />
+            <PropsRoute path="/browse" component={Browse} />
             <PropsRoute path="/detail" component={ProductDetail} />
             <PropsRoute path="/" component={Home} selectHome={selectHome} />
         </Switch>

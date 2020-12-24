@@ -10,6 +10,7 @@ import ShopSummary, { ShopSummaryProps } from './ShopSummary';
 import ToggleButtonGroup from '@material-ui/lab/ToggleButtonGroup';
 import ToggleButton from '@material-ui/lab/ToggleButton';
 import PriceFeature, { PriceProps } from '../shared/PriceFeature';
+import { useSnackbar, withSnackbar, WithSnackbar } from '../../../shared/components/SnackbarProvider';
 
 interface HeaderProps {
     name: string;
@@ -55,6 +56,9 @@ function OptionSelectionFeature<T extends string>(props: OptionSelectionProps<T>
     const { optionName, values, option, setOption } = props;
     // const [option, setOption] = useState<string | null>(options[0].value);
     const handleOption = (event: React.MouseEvent<HTMLElement>, newOption: string | null) => {
+        if (!newOption) {
+            newOption = 'default';
+        }
         setOption(newOption as T);
     };
     return (
@@ -79,12 +83,24 @@ function OptionSelectionFeature<T extends string>(props: OptionSelectionProps<T>
     );
 }
 
-type QuantitySelectionFeatureProps = { buyQuantity: number; setBuyQuantity: Dispatch<SetStateAction<number>> };
+type QuantitySelectionFeatureProps = {
+    buyQuantity: number;
+    availableQuantity: number;
+    setBuyQuantity: Dispatch<SetStateAction<number>>;
+};
 function QuantitySelectionFeature(props: QuantitySelectionFeatureProps) {
-    const { buyQuantity, setBuyQuantity } = props;
+    const { buyQuantity, availableQuantity, setBuyQuantity } = props;
+    const text = availableQuantity >= 0 ? `Còn ${availableQuantity} sản phẩm` : `Vui lòng chọn loại sản phẩm`;
     return (
-        <FeatureSubSection title="Số lượng">
-            <NumberPlusMinus value={buyQuantity} setValue={setBuyQuantity} min={1} max={1000} />
+        <FeatureSubSection title="Số lượng" grid>
+            <Grid item xs={6}>
+                <NumberPlusMinus value={buyQuantity} setValue={setBuyQuantity} min={1} max={availableQuantity} />
+            </Grid>
+            <Grid item xs={6}>
+                <Typography variant="subtitle2" align="right">
+                    {text}
+                </Typography>
+            </Grid>
         </FeatureSubSection>
     );
 }
@@ -100,7 +116,7 @@ function Promotion(): JSX.Element {
     );
 }
 export type ProductSummaryProps<T extends string> = {
-    optionProps?: Array<OptionSelectionProps<T>>;
+    optionProps?: OptionSelectionProps<T>[];
     shopProps: ShopSummaryProps;
     quantityProps: QuantitySelectionFeatureProps;
 } & HeaderProps &
@@ -118,6 +134,7 @@ export default function ProductSummary<T extends string>(props: ProductSummaryPr
         shopProps,
         quantityProps,
     } = props;
+    const snackbar = useSnackbar();
     return (
         <Grid item xs={12} md={7} container spacing={1}>
             <Grid item xs={12}>
@@ -138,7 +155,14 @@ export default function ProductSummary<T extends string>(props: ProductSummaryPr
                     </FeatureSubSection>
                     <QuantitySelectionFeature {...quantityProps} />
                     <div className="pad-top-divider">
-                        <Button variant="contained" size="large" fullWidth color="primary">
+                        <Button
+                            variant="contained"
+                            size="large"
+                            fullWidth
+                            color="primary"
+                            onClick={() => snackbar.info({ text: 'Thêm vào giỏ hàng thành công' })}
+                            disabled={quantityProps.availableQuantity <= 0}
+                        >
                             Chọn mua ngay
                         </Button>
                     </div>
